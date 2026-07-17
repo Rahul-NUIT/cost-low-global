@@ -1,0 +1,215 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens
+   Editorial/enterprise system: high-contrast display serif over a
+   geometric sans, crimson + antique gold on warm charcoal.
+   Defining characteristic: square corners and hairline borders
+   instead of radius and shadow.
+------------------------------------------------------------------ */
+@theme {
+  /* Brand */
+  --color-brand: #c1121f;
+  --color-brand-dark: #9c0d18;
+  --color-brand-soft: #f7e8e9;
+
+  /* Accent — antique gold.
+     `accent` is tuned for dark surfaces (footer, photo overlays). On light
+     backgrounds it only reaches 2.3:1, so gold *text* on light uses
+     `accent-deep` (3.5:1 on canvas) — visually near-identical, but legible. */
+  --color-accent: #c9a227;
+  --color-accent-light: #dcbb52;
+  --color-accent-deep: #a8851c;
+
+  /* Neutrals */
+  --color-ink: #1a1a1a;
+  --color-charcoal: #2b2b2b;
+  --color-charcoal-light: #3a3a3a;
+  /* Both greys clear WCAG AA (4.5:1) on --color-canvas: body 5.3:1, muted 5.1:1.
+     Lightening either past ~#767676 drops small label text below the threshold. */
+  --color-body: #6b6b6b;
+  --color-muted: #6e6e6e;
+  --color-line: #e4e4e4;
+  --color-line-dark: #4a4a4a;
+  --color-surface: #f7f7f6;
+  --color-canvas: #ffffff;
+
+  /* Feedback */
+  --color-success: #1d7a4c;
+  --color-danger: #c1121f;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+  --text-display-xl: 5.25rem;
+  --text-display-xl--line-height: 1.04;
+  --text-display-lg: 4rem;
+  --text-display-lg--line-height: 1.08;
+  --text-display: 3.25rem;
+  --text-display--line-height: 1.12;
+  --text-display-sm: 2.25rem;
+  --text-display-sm--line-height: 1.2;
+
+  /* Layout */
+  --container-page: 1680px;
+
+  /* The system is square by design — every radius token collapses to 0
+     so stray `rounded-*` utilities cannot reintroduce curves. */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  /* Depth comes from borders; shadows stay near-invisible. */
+  --shadow-subtle: 0 1px 2px rgba(26, 26, 26, 0.04);
+  --shadow-raised: 0 18px 48px -28px rgba(26, 26, 26, 0.28);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  /* One visible focus treatment for every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Components
+------------------------------------------------------------------ */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-brand);
+  }
+
+  /* The gold rule that precedes every eyebrow label. */
+  .eyebrow::before {
+    content: '';
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-accent);
+    flex: none;
+  }
+
+  .eyebrow-light {
+    color: #fff;
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+    transition: color 0.25s ease;
+  }
+
+  .link-arrow:hover {
+    color: var(--color-brand);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .marquee-track {
+    animation: var(--animate-marquee);
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Honour the OS setting: collapse motion rather than remove behaviour. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -53,12 +53,15 @@ export default function ShippingRoutes() {
           {/* Padding-top is the inverse of the map aspect, so the plate matches
               the image exactly — nothing is cropped and the projection holds. */}
           <div className="relative w-full" style={{ paddingTop: `${100 / MAP_ASPECT}%` }}>
+            {/* The plate is faint light-grey line art; a contrast bump darkens
+                the coastlines so the map reads clearly, while it still sits
+                behind the red route arcs and pins. */}
             <img
               src={worldMap}
               alt=""
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover opacity-20"
+              className="absolute inset-0 h-full w-full object-cover opacity-80 [filter:contrast(1.4)_brightness(0.92)]"
             />
 
             <svg

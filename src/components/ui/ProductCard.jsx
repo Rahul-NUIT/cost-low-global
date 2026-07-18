@@ -5,8 +5,8 @@ import { useEnquiry } from '../../hooks/useEnquiry';
 import { slideUp, viewport } from '../../utils/motion';
 
 /**
- * Square image over a serif name — no card chrome, per the design system.
- * The group/origin badges carry the catalogue's provenance data.
+ * Square image over a serif name, framed by a 1px brand hairline. The
+ * group/origin badges carry the catalogue's provenance data.
  */
 export default function ProductCard({ product, delay = 0 }) {
   const { open } = useEnquiry();
@@ -19,7 +19,7 @@ export default function ProductCard({ product, delay = 0 }) {
       viewport={viewport}
       variants={slideUp}
       transition={{ delay }}
-      className="group flex h-full flex-col"
+      className="group flex h-full flex-col border border-brand"
     >
       <div className="relative aspect-square overflow-hidden bg-surface">
         <img
@@ -41,20 +41,23 @@ export default function ProductCard({ product, delay = 0 }) {
         )}
       </div>
 
-      <h3 className="mt-6 text-xl transition-colors duration-300 group-hover:text-brand sm:text-2xl">
-        {product.name}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-body">{product.description}</p>
+      {/* Padded so the copy clears the hairline frame. */}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-xl transition-colors duration-300 group-hover:text-brand sm:text-2xl">
+          {product.name}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-body">{product.description}</p>
 
-      <button
-        type="button"
-        onClick={() => open(product.name)}
-        className="mt-5 inline-flex items-center gap-2 self-start text-sm font-medium text-brand transition-all duration-300 hover:gap-3.5"
-      >
-        Enquire Now
-        <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-        <span className="sr-only">about {product.name}</span>
-      </button>
+        <button
+          type="button"
+          onClick={() => open(product.name)}
+          className="mt-5 inline-flex items-center gap-2 self-start text-sm font-medium text-brand transition-all duration-300 hover:gap-3.5"
+        >
+          Enquire Now
+          <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+          <span className="sr-only">about {product.name}</span>
+        </button>
+      </div>
     </motion.article>
   );
 }

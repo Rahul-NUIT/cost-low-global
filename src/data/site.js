@@ -13,12 +13,12 @@ export const company = {
 
 export const navLinks = [
   { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
   { label: 'Food Products', to: '/food-products' },
   { label: 'Electronics', to: '/electronics' },
   { label: 'Import & Export', to: '/import-export' },
   { label: 'Industries', to: '/industries' },
   { label: 'Certifications', to: '/certifications' },
-  { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
 

@@ -77,7 +77,7 @@ export const foodProducts = [
   },
   {
     id: 'f4',
-    name: 'Red Chili Powder',
+    name: 'Red Chilli Powder',
     description: 'Vibrant color, balanced heat — Stemless variety available.',
     category: 'food',
     group: 'Spices',

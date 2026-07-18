@@ -15,6 +15,9 @@ export const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Food Products', to: '/food-products' },
   { label: 'Electronics', to: '/electronics' },
+  { label: 'Import & Export', to: '/import-export' },
+  { label: 'Industries', to: '/industries' },
+  { label: 'Certifications', to: '/certifications' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
@@ -35,6 +38,9 @@ export const footerLinks = {
   quickLinks: [
     { label: 'Home', to: '/' },
     { label: 'About Us', to: '/about' },
+    { label: 'Import & Export', to: '/import-export' },
+    { label: 'Industries', to: '/industries' },
+    { label: 'Certifications', to: '/certifications' },
     { label: 'Contact', to: '/contact' },
   ],
   categories: [
@@ -267,6 +273,193 @@ export const electronicsPage = {
   },
 };
 
+/* ------------------------------------------------------------------
+   Import & Export
+------------------------------------------------------------------ */
+
+export const importExportPage = {
+  eyebrow: 'Connecting Continents',
+  title: 'Import & export logistics, handled end-to-end',
+  subtitle:
+    'From Canadian ports to nine key destination markets — we manage freight, documentation and customs so your cargo moves without friction.',
+  routes: {
+    eyebrow: 'Global Shipping Routes',
+    title: 'From Canadian ports to the world’s markets',
+  },
+  services: {
+    eyebrow: 'Logistics Services',
+    title: 'Everything your shipment needs',
+  },
+  cta: {
+    title: 'Ready to move your next shipment?',
+    label: 'Request a Quote',
+  },
+};
+
+/**
+ * Destination markets, as real port coordinates.
+ *
+ * The reference site hard-codes plate percentages instead, and they do not
+ * correspond to any projection — its pins land in the wrong countries (the Gulf
+ * ports plot across central Africa). Storing lat/lon and projecting in
+ * `sections/ShippingRoutes` keeps the pins truthful; it assumes an
+ * equirectangular map spanning the full globe, which world-map.webp is.
+ */
+export const shippingOrigin = { label: 'Canada · Origin', lat: 43.7, lon: -79.6 };
+
+export const exportDestinations = [
+  { country: 'United Arab Emirates', port: 'Jebel Ali', lat: 25.01, lon: 55.06 },
+  { country: 'Saudi Arabia', port: 'Jeddah / Dammam', lat: 21.48, lon: 39.19 },
+  { country: 'Oman', port: 'Sohar', lat: 24.47, lon: 56.63 },
+  { country: 'Qatar', port: 'Hamad', lat: 25.03, lon: 51.6 },
+  { country: 'Kuwait', port: 'Shuwaikh', lat: 29.35, lon: 47.93 },
+  { country: 'Bahrain', port: 'Khalifa Bin Salman', lat: 26.15, lon: 50.66 },
+  { country: 'India', port: 'Nhava Sheva / Mundra', lat: 18.95, lon: 72.95 },
+  { country: 'United Kingdom', port: 'Felixstowe', lat: 51.96, lon: 1.35 },
+  { country: 'United States', port: 'New York / Houston', lat: 40.68, lon: -74.05 },
+];
+
+export const logisticsServices = [
+  {
+    title: 'Sea Freight',
+    description: 'FCL & LCL ocean freight to every major global port at competitive rates.',
+  },
+  {
+    title: 'Air Freight',
+    description: 'Expedited air cargo for time-sensitive and high-value consignments.',
+  },
+  {
+    title: 'Container Shipping',
+    description: '20ft & 40ft container loading, bagged or bulk, sealed to spec.',
+  },
+  {
+    title: 'Documentation Assistance',
+    description:
+      'COO, phytosanitary, BL, packing lists and letters of credit handled end-to-end.',
+  },
+  {
+    title: 'Customs Support',
+    description: 'Export clearance and destination customs coordination via our broker network.',
+  },
+];
+
+/* ------------------------------------------------------------------
+   Industries
+------------------------------------------------------------------ */
+
+export const industriesPage = {
+  eyebrow: 'Industries We Serve',
+  title: 'Trusted across the global supply chain',
+  subtitle:
+    'Whatever your scale, we tailor grades, packaging and logistics to fit the way your business buys.',
+};
+
+/**
+ * `image` is resolved in components/sections/IndustryGrid.jsx.
+ *
+ * Two entries use substitutes: the reference site illustrates "Food
+ * Manufacturers" with a photo of a programmer at a monitor and "Distributors"
+ * with Nintendo figurines. Neither depicts the industry (and the latter is
+ * licensed character merchandise), so they carry our own imagery instead.
+ */
+export const industries = [
+  {
+    slug: 'food-manufacturers',
+    name: 'Food Manufacturers',
+    description: 'Consistent, spec-driven raw materials for large-scale production lines.',
+  },
+  {
+    slug: 'wholesalers',
+    name: 'Wholesalers',
+    description: 'Volume pricing and reliable replenishment for regional distribution.',
+  },
+  {
+    slug: 'retail-chains',
+    name: 'Retail Chains',
+    description: 'Private-label packing and branded retail-ready goods.',
+  },
+  {
+    slug: 'supermarkets',
+    name: 'Supermarkets',
+    description: 'Shelf-ready pack sizes with certified food-safety compliance.',
+  },
+  {
+    slug: 'importers',
+    name: 'Importers',
+    description: 'Consolidated containers and full documentation support.',
+  },
+  {
+    slug: 'distributors',
+    name: 'Distributors',
+    description: 'Dependable lead times and flexible Incoterm arrangements.',
+  },
+  {
+    slug: 'restaurants',
+    name: 'Restaurants',
+    description: 'Premium-grade pulses, rice and spices for HoReCa kitchens.',
+  },
+];
+
+/* ------------------------------------------------------------------
+   Certifications
+------------------------------------------------------------------ */
+
+export const certificationsPage = {
+  eyebrow: 'Certifications & Compliance',
+  title: 'Quality you can verify, on every shipment',
+  subtitle:
+    'Our goods are handled under internationally recognised food-safety, electrical-safety and export standards, fully documented for your peace of mind.',
+};
+
+/**
+ * These are regulatory claims, not marketing copy. The food entries come from
+ * the reference site; the electronics entries restate the standards already
+ * claimed on the Electronics page. Verify each against current certificates
+ * before launch and drop any that have lapsed.
+ */
+export const certifications = [
+  {
+    name: 'HACCP',
+    description: 'Hazard Analysis & Critical Control Points food-safety management.',
+    vertical: 'Food',
+  },
+  {
+    name: 'ISO 22000',
+    description: 'International food-safety management systems certification.',
+    vertical: 'Food',
+  },
+  {
+    name: 'Canada Grain Commission',
+    description: 'Official grading and quality assurance for Canadian pulses.',
+    vertical: 'Food',
+  },
+  {
+    name: 'Phytosanitary',
+    description: 'Plant-health certification for every international shipment.',
+    vertical: 'Food',
+  },
+  {
+    name: 'Halal',
+    description: 'Certified Halal handling for Middle-East and global markets.',
+    vertical: 'Food',
+  },
+  {
+    name: 'Non-GMO',
+    description: 'Verified non-GMO sourcing available on request.',
+    vertical: 'Food',
+  },
+  {
+    name: 'CE & RoHS',
+    description: 'European conformity and restricted-substances compliance for electronics.',
+    vertical: 'Electronics',
+  },
+  {
+    name: 'BIS & FCC',
+    description: 'Indian and US market approvals for consumer electronics and components.',
+    vertical: 'Electronics',
+  },
+];
+
 export const seo = {
   '/': {
     title: 'Wholesale Hub — Global Trading of Food Products & Electronics',
@@ -282,6 +475,21 @@ export const seo = {
     title: 'Electronics — Wholesale Hub',
     description:
       'Mobile accessories, consumer electronics, LED products, home appliances and components from certified manufacturers.',
+  },
+  '/import-export': {
+    title: 'Import & Export — Wholesale Hub',
+    description:
+      'Global sea, air and container freight with full documentation and customs support — shipping premium goods from Canada worldwide.',
+  },
+  '/industries': {
+    title: 'Industries We Serve — Wholesale Hub',
+    description:
+      'From food manufacturers and wholesalers to retail chains, supermarkets, importers, distributors and restaurants.',
+  },
+  '/certifications': {
+    title: 'Certifications — Wholesale Hub',
+    description:
+      'HACCP, ISO 22000, Canada Grain Commission, phytosanitary, Halal, Non-GMO, CE, RoHS, BIS and FCC — quality you can verify.',
   },
   '/about': {
     title: 'About — Wholesale Hub',

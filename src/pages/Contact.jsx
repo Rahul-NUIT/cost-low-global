@@ -4,6 +4,7 @@ import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
 import GoogleMap from '../components/ui/GoogleMap';
 import ContactForm from '../components/sections/ContactForm';
+import bannerImage from '../assets/images/hero-poster.webp';
 import { getIcon } from '../utils/icons';
 import { useEnquiry } from '../hooks/useEnquiry';
 import { useSeo } from '../hooks/useSeo';
@@ -19,6 +20,8 @@ export default function Contact() {
         eyebrow={contactPage.eyebrow}
         title={contactPage.title}
         subtitle={contactPage.subtitle}
+        image={bannerImage}
+        imageAlt="Shipping port at dusk"
         breadcrumb={[{ label: 'Home', to: '/' }, { label: 'Contact' }]}
       />
 

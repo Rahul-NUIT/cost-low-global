@@ -1,13 +1,22 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Button from '../ui/Button';
 import StatCounter from '../ui/StatCounter';
 import heroImage from '../../assets/images/hero.webp';
 import { hero, heroStats } from '../../data/site';
 import { slideUp, stagger } from '../../utils/motion';
 
+// Lives in public/ rather than assets/ so it streams as a static file instead of
+// being fingerprinted into the bundle. BASE_URL keeps it correct under /demo-new/.
+const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/hero-video.mp4`;
+
 export default function Hero() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-ink">
+      {/* The poster shows immediately and stays put behind the video, so there is
+          never a black frame while the first bytes arrive — and it is the whole
+          background when the OS asks for reduced motion. */}
       <img
         src={heroImage}
         alt={hero.imageAlt}
@@ -15,6 +24,22 @@ export default function Hero() {
         decoding="async"
         className="absolute inset-0 h-full w-full object-cover"
       />
+
+      {!reduceMotion && (
+        <video
+          key="hero-video"
+          className="absolute inset-0 h-full w-full object-cover"
+          src={HERO_VIDEO}
+          poster={heroImage}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
+        />
+      )}
       {/* Weighted to the left so the display type keeps contrast over the photo. */}
       <div
         aria-hidden="true"

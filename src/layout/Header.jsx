@@ -11,10 +11,20 @@ import { cn } from '../utils/cn';
 
 /**
  * Routes whose masthead is a dark photograph — the header floats transparent
- * over these until scrolled. Every other page needs the solid bar immediately
- * or the light-on-light text would be unreadable.
+ * over these until scrolled. Anything not listed (the legal pages, 404) gets the
+ * solid bar immediately, or the light-on-light text would be unreadable. Add a
+ * route here only when its PageBanner has an `image`.
  */
-const DARK_MASTHEAD_ROUTES = ['/', '/food-products', '/electronics'];
+const DARK_MASTHEAD_ROUTES = [
+  '/',
+  '/food-products',
+  '/electronics',
+  '/import-export',
+  '/industries',
+  '/certifications',
+  '/about',
+  '/contact',
+];
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -44,8 +54,10 @@ export default function Header() {
         <div className="container-page flex items-center justify-between gap-6">
           <Logo light={overDarkMasthead} />
 
-          <nav aria-label="Main" className="hidden lg:block">
-            <ul className="flex items-center gap-9">
+          {/* Eight items only clear the logo and CTA from xl up; below that the
+              drawer takes over. */}
+          <nav aria-label="Main" className="hidden xl:block">
+            <ul className="flex items-center gap-5 2xl:gap-8">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <NavLink
@@ -53,7 +65,7 @@ export default function Header() {
                     end={link.to === '/'}
                     className={({ isActive }) =>
                       cn(
-                        'relative text-[0.9375rem] transition-colors duration-300',
+                        'relative whitespace-nowrap text-sm transition-colors duration-300',
                         isActive
                           ? 'text-brand'
                           : overDarkMasthead
@@ -80,7 +92,7 @@ export default function Header() {
               aria-label="Open navigation"
               aria-expanded={drawerOpen}
               className={cn(
-                'grid h-10 w-10 place-items-center border transition-colors duration-300 lg:hidden',
+                'grid h-10 w-10 place-items-center border transition-colors duration-300 xl:hidden',
                 overDarkMasthead
                   ? 'border-white/40 text-white hover:bg-white hover:text-ink'
                   : 'border-line text-ink hover:border-brand hover:text-brand',

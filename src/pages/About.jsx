@@ -6,6 +6,7 @@ import Marquee from '../components/ui/Marquee';
 import Timeline from '../components/ui/Timeline';
 import CtaBanner from '../components/sections/CtaBanner';
 import foodImage from '../assets/images/food.webp';
+import bannerImage from '../assets/images/warehouse.webp';
 import { getIcon } from '../utils/icons';
 import { aboutPage, aboutStats, marqueeItems, processSection, seo } from '../data/site';
 import { useSeo } from '../hooks/useSeo';
@@ -19,6 +20,8 @@ export default function About() {
         eyebrow={aboutPage.eyebrow}
         title={aboutPage.title}
         subtitle={aboutPage.subtitle}
+        image={bannerImage}
+        imageAlt="Sacks of sourced goods in a trading warehouse"
         breadcrumb={[{ label: 'Home', to: '/' }, { label: 'About' }]}
       />
 

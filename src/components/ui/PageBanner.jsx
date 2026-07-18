@@ -1,18 +1,45 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Breadcrumb from './Breadcrumb';
 import { fadeIn, slideUp } from '../../utils/motion';
 import { cn } from '../../utils/cn';
 
 /**
- * Inner-page masthead. With `image` it renders as a dark photographic band;
- * without, as a light editorial header. Sits under the fixed header, so the
- * top padding clears it.
+ * Inner-page masthead. With `image` it renders as a dark photographic band that
+ * parallaxes on scroll; without, as a light editorial header. Sits under the
+ * fixed header, so the top padding clears it.
+ *
+ * The home page uses `sections/Hero` instead and is deliberately not parallaxed.
  */
-export default function PageBanner({ eyebrow, title, subtitle, image, imageAlt = '', breadcrumb }) {
+export default function PageBanner({
+  eyebrow,
+  title,
+  subtitle,
+  image,
+  imageAlt = '',
+  breadcrumb,
+  parallax = true,
+}) {
   const hasImage = Boolean(image);
+  const sectionRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+  const enabled = hasImage && parallax && !reduceMotion;
+
+  // Track this section from the moment its top hits the viewport top until it
+  // has fully scrolled past.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+
+  // The plate is 130% tall and starts pulled up by the overflow, so it can drift
+  // down 30% without ever exposing an edge.
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   return (
     <section
+      ref={sectionRef}
       className={cn(
         'relative overflow-hidden pb-16 pt-36 sm:pb-20 sm:pt-44 lg:pb-24 lg:pt-52',
         hasImage ? 'bg-charcoal' : 'border-b border-line bg-surface',
@@ -20,13 +47,18 @@ export default function PageBanner({ eyebrow, title, subtitle, image, imageAlt =
     >
       {hasImage && (
         <>
-          <img
-            src={image}
-            alt={imageAlt}
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+          <motion.div
+            style={enabled ? { y, scale } : undefined}
+            className="absolute inset-x-0 top-[-15%] h-[130%] will-change-transform"
+          >
+            <img
+              src={image}
+              alt={imageAlt}
+              fetchPriority="high"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
           <div aria-hidden="true" className="absolute inset-0 bg-ink/70" />
         </>
       )}

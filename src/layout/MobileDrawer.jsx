@@ -35,7 +35,7 @@ export default function MobileDrawer({ open, onClose, onEnquire }) {
   return (
     <AnimatePresence>
       {open && (
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -5,6 +5,9 @@ import Home from '../pages/Home';
 
 const FoodProducts = lazy(() => import('../pages/FoodProducts'));
 const Electronics = lazy(() => import('../pages/Electronics'));
+const ImportExport = lazy(() => import('../pages/ImportExport'));
+const Industries = lazy(() => import('../pages/Industries'));
+const Certifications = lazy(() => import('../pages/Certifications'));
 const About = lazy(() => import('../pages/About'));
 const Contact = lazy(() => import('../pages/Contact'));
 const Privacy = lazy(() => import('../pages/Privacy'));
@@ -15,6 +18,9 @@ export const routes = [
   { path: '/', element: <Home /> },
   { path: '/food-products', element: <FoodProducts /> },
   { path: '/electronics', element: <Electronics /> },
+  { path: '/import-export', element: <ImportExport /> },
+  { path: '/industries', element: <Industries /> },
+  { path: '/certifications', element: <Certifications /> },
   { path: '/about', element: <About /> },
   { path: '/contact', element: <Contact /> },
   { path: '/privacy', element: <Privacy /> },

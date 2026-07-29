@@ -246,7 +246,7 @@ export const electronicsProducts = [
   {
     id: 'e9',
     name: 'Water Heater',
-    description: 'Instant and storage water heaters with safety certifications for global markets.',
+    description: 'Instant and storage water heaters designed for dependable performance in global markets.',
     category: 'electronics',
     group: 'Home Appliances',
   },

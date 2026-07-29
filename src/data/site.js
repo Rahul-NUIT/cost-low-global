@@ -39,7 +39,6 @@ export const footerLinks = {
     { label: 'About Us', to: '/about' },
     { label: 'Import & Export', to: '/import-export' },
     { label: 'Industries', to: '/industries' },
-    // { label: 'Certifications', to: '/certifications' },
     { label: 'Contact', to: '/contact' },
   ],
   categories: [
@@ -171,7 +170,7 @@ export const processSection = {
     {
       icon: 'ClipboardCheck',
       title: 'Quality Control',
-      description: 'Pre-shipment inspection, certification and packaging.',
+      description: 'Pre-shipment inspection, quality checks and packaging.',
     },
     {
       icon: 'Ship',
@@ -190,7 +189,7 @@ export const helpBanner = {
 export const ctaBanner = {
   eyebrow: 'Ready to Source?',
   title: "Let's build your next shipment.",
-  body: 'Share your requirement — our trade team will respond within one business day with samples, certifications and pricing.',
+  body: 'Share your requirement — our trade team will respond within one business day with samples and pricing.',
   primaryCta: { label: 'Request a Quote' },
   secondaryCta: { label: 'Contact Us', to: '/contact' },
 };
@@ -205,7 +204,7 @@ export const aboutPage = {
     title: 'Built by traders, for traders.',
     paragraphs: [
       'Wholesale Hub was founded with a single conviction: that international trade should feel as simple and dependable as buying locally.',
-      'Today, we operate across 40+ countries with a focused portfolio in Food Products and Electronics — two verticals where consistency, certifications and supply reliability are non-negotiable.',
+      'Today, we operate across 40+ countries with a focused portfolio in Food Products and Electronics — two verticals where consistency, quality standards and supply reliability are non-negotiable.',
       'Our team of sourcing specialists, logistics managers and quality auditors works as an extension of your procurement function — taking ownership from enquiry to delivery.',
     ],
   },
@@ -245,7 +244,7 @@ export const contactPage = {
   quickEnquiry: {
     eyebrow: 'Quick Enquiry',
     title: 'Skip the form. Open the enquiry panel.',
-    body: "Tell us what you need and we'll come back to you with samples, certifications and pricing.",
+    body: "Tell us what you need and we'll come back to you with samples and pricing.",
     cta: 'Open Enquiry Form',
   },
 };
@@ -254,7 +253,7 @@ export const foodPage = {
   eyebrow: 'Category',
   title: 'Food Products',
   subtitle:
-    'From protein-rich pulses to specialty spices and premium dry fruits, our food portfolio is built on trusted origins, rigorous quality control and certifications that meet international standards.',
+    'From protein-rich pulses to specialty spices and premium dry fruits, our food portfolio is built on trusted origins, rigorous quality control and standards that meet international expectations.',
   intro: {
     title: 'Authentic origins. Export-grade quality.',
     body: 'We work directly with farms, mills and processors across India, South-East Asia, Africa and Canada. Every consignment is sampled, lab-tested and packed to client specifications — ready for wholesale, retail or HoReCa channels worldwide.',
@@ -265,10 +264,10 @@ export const electronicsPage = {
   eyebrow: 'Category',
   title: 'Electronics',
   subtitle:
-    'A curated electronics portfolio — from mobile accessories to LED lighting and small appliances — backed by certified manufacturing partners and reliable lead times.',
+    'A curated electronics portfolio — from mobile accessories to LED lighting and small appliances — backed by established manufacturing partners and reliable lead times.',
   intro: {
-    title: 'Certified products. Trusted manufacturers.',
-    body: 'All products meet CE, RoHS, BIS or FCC standards as applicable. We support private-label, OEM and standard catalog supply — with end-to-end logistics across air and sea freight.',
+    title: 'Quality products. Trusted manufacturers.',
+    body: 'All products meet relevant safety and regulatory standards as applicable. We support private-label, OEM and standard catalog supply — with end-to-end logistics across air and sea freight.',
   },
 };
 
@@ -399,66 +398,6 @@ export const industries = [
   // },
 ];
 
-/* ------------------------------------------------------------------
-   Certifications
------------------------------------------------------------------- */
-
-export const certificationsPage = {
-  eyebrow: 'Certifications & Compliance',
-  title: 'Quality you can verify, on every shipment',
-  subtitle:
-    'Our goods are handled under internationally recognised food-safety, electrical-safety and export standards, fully documented for your peace of mind.',
-};
-
-/**
- * These are regulatory claims, not marketing copy. The food entries come from
- * the reference site; the electronics entries restate the standards already
- * claimed on the Electronics page. Verify each against current certificates
- * before launch and drop any that have lapsed.
- */
-export const certifications = [
-  {
-    name: 'HACCP',
-    description: 'Hazard Analysis & Critical Control Points food-safety management.',
-    vertical: 'Food',
-  },
-  {
-    name: 'ISO 22000',
-    description: 'International food-safety management systems certification.',
-    vertical: 'Food',
-  },
-  {
-    name: 'Canada Grain Commission',
-    description: 'Official grading and quality assurance for Canadian pulses.',
-    vertical: 'Food',
-  },
-  {
-    name: 'Phytosanitary',
-    description: 'Plant-health certification for every international shipment.',
-    vertical: 'Food',
-  },
-  {
-    name: 'Halal',
-    description: 'Certified Halal handling for Middle-East and global markets.',
-    vertical: 'Food',
-  },
-  {
-    name: 'Non-GMO',
-    description: 'Verified non-GMO sourcing available on request.',
-    vertical: 'Food',
-  },
-  {
-    name: 'CE & RoHS',
-    description: 'European conformity and restricted-substances compliance for electronics.',
-    vertical: 'Electronics',
-  },
-  {
-    name: 'BIS & FCC',
-    description: 'Indian and US market approvals for consumer electronics and components.',
-    vertical: 'Electronics',
-  },
-];
-
 export const seo = {
   '/': {
     title: 'Wholesale Hub — Global Trading of Food Products & Electronics',
@@ -485,11 +424,6 @@ export const seo = {
     description:
       'From food manufacturers and wholesalers to retail chains, supermarkets, importers, distributors and restaurants.',
   },
-  '/certifications': {
-    title: 'Certifications — Wholesale Hub',
-    description:
-      'HACCP, ISO 22000, Canada Grain Commission, phytosanitary, Halal, Non-GMO, CE, RoHS, BIS and FCC — quality you can verify.',
-  },
   '/about': {
     title: 'About — Wholesale Hub',
     description:
@@ -498,7 +432,7 @@ export const seo = {
   '/contact': {
     title: 'Contact — Wholesale Hub',
     description:
-      'Get in touch with our trade team for inquiries, samples, certifications or custom quotes.',
+      'Get in touch with our trade team for inquiries, samples or custom quotes.',
   },
   '/privacy': { title: 'Privacy — Wholesale Hub', description: 'Privacy policy for Wholesale Hub.' },
   '/terms': { title: 'Terms — Wholesale Hub', description: 'Terms of use for Wholesale Hub.' },

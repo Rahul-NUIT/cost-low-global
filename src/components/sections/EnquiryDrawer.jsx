@@ -109,8 +109,7 @@ export default function EnquiryDrawer() {
                 </span>
                 <h3 className="mt-8 text-3xl">Enquiry received</h3>
                 <p className="mt-4 max-w-sm text-sm leading-relaxed text-body">
-                  Our trade team will respond within one business day with samples, certifications
-                  and pricing.
+                  Our trade team will respond within one business day with samples and pricing.
                 </p>
                 <Button onClick={handleClose} variant="outline" className="mt-8">
                   Close
@@ -176,7 +175,7 @@ export default function EnquiryDrawer() {
                   label="Message"
                   name="message"
                   required
-                  placeholder="Quantities, destination port, certifications required…"
+                  placeholder="Quantities, destination port, or product details…"
                   value={form.values.message}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}

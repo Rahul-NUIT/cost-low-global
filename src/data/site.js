@@ -39,7 +39,7 @@ export const footerLinks = {
     { label: 'About Us', to: '/about' },
     { label: 'Import & Export', to: '/import-export' },
     { label: 'Industries', to: '/industries' },
-    { label: 'Certifications', to: '/certifications' },
+    // { label: 'Certifications', to: '/certifications' },
     { label: 'Contact', to: '/contact' },
   ],
   categories: [

@@ -21,7 +21,7 @@ const DARK_MASTHEAD_ROUTES = [
   '/electronics',
   '/import-export',
   '/industries',
-  '/certifications',
+  // '/certifications',
   '/about',
   '/contact',
 ];

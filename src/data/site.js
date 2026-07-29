@@ -7,7 +7,7 @@ export const company = {
   email: 'info@costlowglobal.com',
   phone: '+1 365-356-0963',
   phoneHref: '+13653560963',
-  hours: 'Sun – Thu, 9:00 – 18:00 GST',
+  hours: 'Mon – Fri, 09:00 am – 05:00 pm',
   founded: 2026,
 };
 
@@ -18,7 +18,6 @@ export const navLinks = [
   { label: 'Electronics', to: '/electronics' },
   { label: 'Import & Export', to: '/import-export' },
   { label: 'Industries', to: '/industries' },
-  { label: 'Certifications', to: '/certifications' },
   { label: 'Contact', to: '/contact' },
 ];
 
@@ -364,40 +363,40 @@ export const industriesPage = {
  */
 export const industries = [
   {
-    slug: 'food-manufacturers',
-    name: 'Food Manufacturers',
-    description: 'Consistent, spec-driven raw materials for large-scale production lines.',
-  },
-  {
     slug: 'wholesalers',
     name: 'Wholesalers',
     description: 'Volume pricing and reliable replenishment for regional distribution.',
   },
-  {
-    slug: 'retail-chains',
-    name: 'Retail Chains',
-    description: 'Private-label packing and branded retail-ready goods.',
-  },
-  {
-    slug: 'supermarkets',
-    name: 'Supermarkets',
-    description: 'Shelf-ready pack sizes with certified food-safety compliance.',
-  },
-  {
-    slug: 'importers',
-    name: 'Importers',
-    description: 'Consolidated containers and full documentation support.',
-  },
-  {
-    slug: 'distributors',
-    name: 'Distributors',
-    description: 'Dependable lead times and flexible Incoterm arrangements.',
-  },
-  {
-    slug: 'restaurants',
-    name: 'Restaurants',
-    description: 'Premium-grade pulses, rice and spices for HoReCa kitchens.',
-  },
+  // {
+  //   slug: 'food-manufacturers',
+  //   name: 'Food Manufacturers',
+  //   description: 'Consistent, spec-driven raw materials for large-scale production lines.',
+  // },
+  // {
+  //   slug: 'retail-chains',
+  //   name: 'Retail Chains',
+  //   description: 'Private-label packing and branded retail-ready goods.',
+  // },
+  // {
+  //   slug: 'supermarkets',
+  //   name: 'Supermarkets',
+  //   description: 'Shelf-ready pack sizes with certified food-safety compliance.',
+  // },
+  // {
+  //   slug: 'importers',
+  //   name: 'Importers',
+  //   description: 'Consolidated containers and full documentation support.',
+  // },
+  // {
+  //   slug: 'distributors',
+  //   name: 'Distributors',
+  //   description: 'Dependable lead times and flexible Incoterm arrangements.',
+  // },
+  // {
+  //   slug: 'restaurants',
+  //   name: 'Restaurants',
+  //   description: 'Premium-grade pulses, rice and spices for HoReCa kitchens.',
+  // },
 ];
 
 /* ------------------------------------------------------------------

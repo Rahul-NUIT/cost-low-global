@@ -1,38 +1,50 @@
 /**
  * Integration points for the backend.
  *
- * No endpoint ships with the source site, so these resolve locally and log the
- * payload. Point `ENDPOINTS` at the real API (or set VITE_API_BASE_URL) and
- * delete `simulate` to go live — the calling components need no changes.
+ * The endpoints are the PHP scripts in `public/api/`, which Vite copies into
+ * the build output. They are resolved against the deploy sub-folder
+ * (import.meta.env.BASE_URL) so the same code works wherever the site is
+ * mounted. Set VITE_API_BASE_URL to point at another origin — the Vite dev
+ * server cannot execute PHP, so development needs it aimed at Laragon or the
+ * live host. See .env.example.
  */
-const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '');
 
 const ENDPOINTS = {
-  enquiry: '/api/enquiries',
-  contact: '/api/contact',
-  newsletter: '/api/newsletter',
+  enquiry: 'api/enquiry.php',
+  contact: 'api/contact.php',
+  newsletter: 'api/newsletter.php',
 };
 
-const simulate = (payload) =>
-  new Promise((resolve) => {
-    if (import.meta.env.DEV) console.info('[api] submitted', payload);
-    setTimeout(resolve, 900);
-  });
+const GENERIC_ERROR =
+  'We could not send your message. Please try again or email us directly.';
+
+const endpointUrl = (path) =>
+  API_BASE ? `${API_BASE}/${path}` : `${import.meta.env.BASE_URL}${path}`;
 
 async function post(endpoint, payload) {
-  if (!BASE_URL) return simulate(payload);
+  let response;
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    throw new Error('We could not send your message. Please try again or email us directly.');
+  try {
+    response = await fetch(endpointUrl(endpoint), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    // Offline, DNS failure or a blocked cross-origin request.
+    throw new Error(GENERIC_ERROR);
   }
 
-  return response.json().catch(() => ({}));
+  // A misconfigured server can answer with an HTML error page, so treat any
+  // unparseable body as a failure rather than a silent success.
+  const data = await response.json().catch(() => null);
+
+  if (!response.ok || !data?.success) {
+    throw new Error(data?.message || GENERIC_ERROR);
+  }
+
+  return data;
 }
 
 export const submitEnquiry = (payload) => post(ENDPOINTS.enquiry, payload);

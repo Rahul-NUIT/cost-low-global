@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { trackPageView } from '../utils/analytics';
 
 const setMeta = (selector, attr, content) => {
   let tag = document.head.querySelector(selector);
@@ -12,7 +13,9 @@ const setMeta = (selector, attr, content) => {
 };
 
 /**
- * Syncs title, description, canonical and OG/Twitter tags per route.
+ * Syncs title, description, canonical and OG/Twitter tags per route, then
+ * reports the page view. Every routed page calls this, so it doubles as the
+ * one place where a route is known to have settled with its final title.
  * A small alternative to react-helmet for a site this size.
  */
 export function useSeo({ title, description, image } = {}) {
@@ -45,5 +48,7 @@ export function useSeo({ title, description, image } = {}) {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', url);
+
+    trackPageView(title);
   }, [title, description, image]);
 }

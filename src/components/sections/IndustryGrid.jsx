@@ -81,7 +81,7 @@ export default function IndustryGrid() {
             {industriesAside.body}
           </p>
 
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 sm:gap-x-10">
+          {/* <ul className="mt-10 grid gap-6 sm:grid-cols-2 sm:gap-x-10">
             {industriesAside.points.map((point) => (
               <li key={point.title} className="flex gap-4">
                 <Check aria-hidden="true" className="mt-0.5 h-5 w-5 flex-none text-brand" strokeWidth={1.5} />
@@ -91,7 +91,7 @@ export default function IndustryGrid() {
                 </div>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           <div className="mt-10">
             <Button to={industriesAside.cta.to} variant="outline" size="sm">

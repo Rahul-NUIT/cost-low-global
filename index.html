@@ -14,7 +14,7 @@
     />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Wholesale Hub - Global Trading" />
+    <meta property="og:title" content="Costlow Global" />
     <meta
       property="og:description"
       content="Premium food products and electronics, sourced and delivered worldwide."
@@ -27,6 +27,18 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MPQ4FRJ3R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // send_page_view is off because this is a single-page app: the automatic
+      // pageview only fires on document load, so every route change would go
+      // unrecorded. src/utils/analytics.js sends them all, first load included.
+      gtag('config', 'G-9MPQ4FRJ3R', { send_page_view: false });
+    </script>
   </head>
   <body>
     <div id="root"></div>

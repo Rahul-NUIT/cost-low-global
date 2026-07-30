@@ -5,33 +5,31 @@ content-complete rebuild of the source demo under a new editorial design system.
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173/demo-new/
+npm run dev      # http://localhost:5173/
 npm run build    # production bundle -> dist/
 npm run preview  # serve the built bundle
 ```
 
 ## Deployment
 
-The site is built for a **`/demo-new/` sub-folder**, not a domain root. Upload the whole
+The site is built for the **domain root** (https://costlowglobal.com/). Upload the whole
 contents of `dist/` (including the dot-file `.htaccess` — most SFTP clients hide it) into
-the `demo-new` folder on the server.
+the web root on the server, so `dist/index.html` lands at `/index.html`.
 
 The path is set once, by `base` in `vite.config.js`. Everything else derives from it:
-asset URLs at build time, and the router's `basename` via `import.meta.env.BASE_URL`
-(`App.jsx`). To move the site, change `base` — then update `RewriteBase` and the fallback
-path in `public/.htaccess`, which cannot read the Vite config.
+asset URLs at build time, the router's `basename` via `import.meta.env.BASE_URL`
+(`App.jsx`), and the form endpoints (`src/utils/api.js`). To move the site into a
+sub-folder, change `base` — then update `RewriteBase` and the fallback path in
+`public/.htaccess`, which cannot read the Vite config.
 
-`public/.htaccess` provides the SPA fallback. Without it, `/demo-new/about` serves fine
-via in-app navigation but 404s on a direct hit or refresh. On nginx the equivalent is:
+`public/.htaccess` provides the SPA fallback. Without it, `/about` serves fine via in-app
+navigation but 404s on a direct hit or refresh. On nginx the equivalent is:
 
 ```nginx
-location /demo-new/ {
-  try_files $uri $uri/ /demo-new/index.html;
+location / {
+  try_files $uri $uri/ /index.html;
 }
 ```
-
-Verified against the built bundle at the sub-path: every internal link and asset resolves
-under `/demo-new`, and deep-link + refresh works on every route.
 
 ## Stack
 
@@ -96,15 +94,23 @@ disappears on light backgrounds:
 idle → submitting → success/error lifecycle. Fields validate on blur, then live once
 touched. Composable validators: `required`, `email`, `minLength`, `compose`.
 
-Submissions route through `src/utils/api.js`. With no `VITE_API_BASE_URL` set they resolve
-locally and log the payload; set the variable (see `.env.example`) to POST to a real API —
-no component changes needed.
+Submissions route through `src/utils/api.js` to the PHP endpoints in `public/api/`, which
+Vite copies into `dist/`. Each endpoint mails the admin (`admin_email` in
+`public/api/config.php`) and acknowledges the sender, over SMTP via PHPMailer.
 
-| Endpoint          | Used by                       |
-| ----------------- | ----------------------------- |
-| `/api/enquiries`  | Enquiry drawer (product CTAs) |
-| `/api/contact`    | Contact page form             |
-| `/api/newsletter` | Footer newsletter             |
+| Endpoint              | Used by                       |
+| --------------------- | ----------------------------- |
+| `api/enquiry.php`     | Enquiry drawer (product CTAs) |
+| `api/contact.php`     | Contact page form             |
+| `api/newsletter.php`  | Footer newsletter             |
+
+Paths are resolved against `import.meta.env.BASE_URL`, so they follow the deploy path.
+The Vite dev server cannot execute PHP — for local testing set `VITE_API_BASE_URL` to a
+host that can (see `.env.example`), and leave it unset for production builds.
+
+`public/api/config.php` holds the live SMTP credentials. It is gitignored; copy
+`config.example.php` and fill it in on a fresh checkout, and make sure the host actually
+executes PHP in that folder or the file is served as readable text.
 
 ## Before launch
 

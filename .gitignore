@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Live SMTP credentials — uploaded to the server, never committed.
+public/api/config.php
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

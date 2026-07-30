@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // Deployed into a /demo-new/ sub-folder, so every built asset URL is prefixed.
-  // React Router reads the same value back via import.meta.env.BASE_URL (App.jsx)
-  // — change it here only.
-  base: '/demo-new/',
+  // Deployed at the domain root. React Router reads this back as the router
+  // basename via import.meta.env.BASE_URL (App.jsx), and src/utils/api.js
+  // resolves the form endpoints against it — change the path here only.
+  base: '/',
   plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {

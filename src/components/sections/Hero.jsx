@@ -6,7 +6,7 @@ import { hero, heroStats } from '../../data/site';
 import { slideUp, stagger } from '../../utils/motion';
 
 // Lives in public/ rather than assets/ so it streams as a static file instead of
-// being fingerprinted into the bundle. BASE_URL keeps it correct under /demo-new/.
+// being fingerprinted into the bundle. BASE_URL keeps it correct at any deploy path.
 const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/hero-video.mp4`;
 
 export default function Hero() {

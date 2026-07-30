@@ -1,22 +1,22 @@
-# SPA fallback for the /demo-new/ deployment.
+# SPA fallback for the domain-root deployment.
 #
-# Client-side routes (/demo-new/about, /demo-new/contact, …) have no file on
-# disk. Without this, a direct hit or refresh on any route but the index returns
-# 404 — the app only survives in-app navigation.
+# Client-side routes (/about, /contact, …) have no file on disk. Without this,
+# a direct hit or refresh on any route but the index returns 404 — the app only
+# survives in-app navigation.
 #
 # Copied to the deploy root by the build (public/ ships as-is).
-# If the folder is ever renamed, update RewriteBase and the fallback path here
-# and `base` in vite.config.js.
+# If the site ever moves into a sub-folder, update RewriteBase and the fallback
+# path here, and `base` in vite.config.js.
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /demo-new/
+  RewriteBase /
 
   # Never rewrite real files or directories — assets must serve normally.
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  RewriteRule . /demo-new/index.html [L]
+  RewriteRule . /index.html [L]
 </IfModule>
 
 # Fingerprinted assets are immutable; index.html must always revalidate or

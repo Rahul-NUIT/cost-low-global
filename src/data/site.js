@@ -404,26 +404,26 @@ export const industries = [
  */
 export const industriesAside = {
   eyebrow: 'How We Work',
-  title: 'Built around the way you buy',
-  body: 'No two buyers order alike. We set each account up around its own volumes, grades and delivery rhythm rather than a fixed catalogue.',
-  points: [
-    {
-      title: 'Volume-tiered pricing',
-      description: 'Rates that improve with your order book, held for the agreed term.',
-    },
-    {
-      title: 'Packed to your spec',
-      description: 'Bulk sacks, shelf-ready pack sizes or private label — loaded bagged or in bulk.',
-    },
-    {
-      title: 'Documentation handled',
-      description: 'COO, phytosanitary, BL and packing lists prepared for every shipment.',
-    },
-    {
-      title: 'Dependable lead times',
-      description: 'Scheduled replenishment by sea or air, with flexible Incoterm arrangements.',
-    },
-  ],
+  title: 'Tailored to Your Business Needs',
+  body: 'Every business has different requirements. We customize our products, pricing, and delivery plans to match the way you order.',
+  // points: [
+  //   {
+  //     title: 'Volume-tiered pricing',
+  //     description: 'Rates that improve with your order book, held for the agreed term.',
+  //   },
+  //   {
+  //     title: 'Packed to your spec',
+  //     description: 'Bulk sacks, shelf-ready pack sizes or private label — loaded bagged or in bulk.',
+  //   },
+  //   {
+  //     title: 'Documentation handled',
+  //     description: 'COO, phytosanitary, BL and packing lists prepared for every shipment.',
+  //   },
+  //   {
+  //     title: 'Dependable lead times',
+  //     description: 'Scheduled replenishment by sea or air, with flexible Incoterm arrangements.',
+  //   },
+  // ],
   cta: { label: 'Talk to Our Team', to: '/contact' },
 };
 

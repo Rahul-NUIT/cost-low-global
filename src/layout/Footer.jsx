@@ -100,7 +100,7 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col gap-4 border-t border-line-dark pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/50">
-            © {company.founded} {company.name}. All rights reserved.
+            © {company.founded} {company.name} All rights reserved.
           </p>
           <ul className="flex gap-6">
             {footerLinks.legal.map((link) => (

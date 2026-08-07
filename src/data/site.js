@@ -1,5 +1,5 @@
 export const company = {
-  name: 'Wholesale Hub',
+  name: 'Costlow Global Wholesale Trading Inc.',
   tagline: 'Global Sourcing & Trading',
   description:
     'A global trading partner sourcing premium food products and electronics for retailers, distributors and wholesalers worldwide.',
